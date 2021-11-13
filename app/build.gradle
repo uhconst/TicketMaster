@@ -1,0 +1,105 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        applicationId = rootProject.ext.applicationId
+
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+
+        testInstrumentationRunner rootProject.ext.testInstrumentationRunner
+
+        dataBinding {
+            enabled = true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        release {
+            debuggable true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "API_URL", "\"https://app.ticketmaster.com/\""
+            buildConfigField "String", "API_KEY", "\"5ike7MSNlAAvxYKqXhSyNY324bnkkwld\""
+        }
+
+        debug {
+            debuggable false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "API_URL", "\"https://app.ticketmaster.com/\""
+            buildConfigField "String", "API_KEY", "\"5ike7MSNlAAvxYKqXhSyNY324bnkkwld\""
+        }
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
+}
+
+
+dependencies {
+    def dependencies = rootProject.ext.appDependencies
+    def testDependencies = rootProject.ext.appTestDependencies
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation dependencies.kotlin
+
+    implementation dependencies.appCompat
+    implementation dependencies.constraint
+    implementation dependencies.design
+    implementation dependencies.cardView
+
+    implementation dependencies.archLifecyle
+
+    implementation dependencies.room
+    implementation dependencies.rxRoom
+    kapt dependencies.roomCompiler
+
+    implementation dependencies.koin
+    implementation dependencies.koinViewModel
+
+    implementation dependencies.picasso
+
+    implementation dependencies.rxKotlin
+    implementation dependencies.rxAndroid
+
+    implementation dependencies.retrofit
+    implementation dependencies.retrofitGsonConverter
+    implementation dependencies.retrofitRxJava2Adapter
+    implementation dependencies.retrofitLog
+
+    testImplementation testDependencies.junit
+    testImplementation testDependencies.mockitoKotlin
+    testImplementation testDependencies.archCore
+    testImplementation testDependencies.testCore
+    testImplementation testDependencies.koin
+    testImplementation testDependencies.robolectric
+
+    androidTestImplementation testDependencies.espresso
+    androidTestImplementation testDependencies.junitExt
+    androidTestImplementation testDependencies.koin
+    androidTestImplementation testDependencies.runner
+
+
+    implementation project(':presentation')
+    implementation project(':data')
+    implementation project(':domain')
+}

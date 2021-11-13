@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Default screen margins -->
+    <dimen name="default_margin">16dp</dimen>
+    <dimen name="default_horizontal_margin">@dimen/default_margin</dimen>
+    <dimen name="default_vertical_margin">@dimen/default_margin</dimen>
+    <dimen name="list_item_margin">8dp</dimen>
+
+    <dimen name="divisor_height">1dp</dimen>
+    <dimen name="star_size">60dp</dimen>
+</resources>
