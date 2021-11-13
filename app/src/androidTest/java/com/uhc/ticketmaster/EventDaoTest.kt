@@ -64,6 +64,21 @@ class EventDaoTest : KoinTest {
         assertEquals(entity, favouriteById)
     }
 
+
+    @Test
+    fun testDeleteFavourite() {
+        //Prepare
+        val entity = getFavouriteEventEntityMock("2")
+
+        //Action
+        eventDao.insertFavourite(entity)
+        eventDao.deleteFavourite(entity)
+        val favouriteById = eventDao.findFavourite(entity.id)
+
+        //Test
+        assertNull(favouriteById)
+    }
+
     private fun getFavouriteEventEntityMock(id: String = "1"): FavouriteEventEntity =
         FavouriteEventEntity(id)
 }
