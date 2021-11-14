@@ -28,8 +28,8 @@ class ModuleCheckTest : KoinTest {
             androidContext(ApplicationProvider.getApplicationContext<TicketMasterApp>())
             modules(
                 appModule,
-                dataModule
-//                domainModule,
+                dataModule,
+                domainModule
 //                presentationModule
             )
         }.checkModules {

@@ -17,8 +17,8 @@ class TicketMasterApp : Application() {
             androidContext(this@TicketMasterApp)
             modules(
                 appModule,
-                dataModule
-                /*domainModule,
+                dataModule,
+                domainModule/*
                 presentationModule*/
             )
         }
