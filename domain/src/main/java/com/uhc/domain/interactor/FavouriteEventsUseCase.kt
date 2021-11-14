@@ -17,11 +17,11 @@ class FavouriteEventsUseCase(
         }
     }
 
-    fun saveFavouriteEvent(event: Event): Completable {
+    private fun saveFavouriteEvent(event: Event): Completable {
         return eventRepository.saveFavouriteEvent(event)
     }
 
-    fun deleteFavouriteEvent(event: Event): Completable {
+    private fun deleteFavouriteEvent(event: Event): Completable {
         return eventRepository.deleteFavouriteEvent(event.id)
     }
 
