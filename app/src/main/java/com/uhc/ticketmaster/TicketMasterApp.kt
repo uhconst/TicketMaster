@@ -18,8 +18,8 @@ class TicketMasterApp : Application() {
             modules(
                 appModule,
                 dataModule,
-                domainModule/*
-                presentationModule*/
+                domainModule,
+                presentationModule
             )
         }
     }

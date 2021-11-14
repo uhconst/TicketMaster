@@ -29,8 +29,8 @@ class ModuleCheckTest : KoinTest {
             modules(
                 appModule,
                 dataModule,
-                domainModule
-//                presentationModule
+                domainModule,
+                presentationModule
             )
         }.checkModules {
             create<EventListViewModel> { parametersOf(viewModelId) }
