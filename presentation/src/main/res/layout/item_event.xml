@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="event"
+            type="com.uhc.domain.model.Event" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/default_horizontal_margin"
+        android:paddingTop="@dimen/list_item_margin"
+        android:paddingEnd="@dimen/default_horizontal_margin"
+        android:paddingBottom="@dimen/list_item_margin">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_banner"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.3"
+            app:loadImageUrl="@{event.imageUrl}" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{event.name}"
+            android:textColor="@android:color/black"
+            app:layout_constraintBottom_toTopOf="@+id/tv_venue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_banner"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="EVENT NAME" />
+
+        <TextView
+            android:id="@+id/tv_venue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{event.venue}"
+            android:textColor="@android:color/black"
+            app:layout_constraintBottom_toTopOf="@+id/tv_dates"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_banner"
+            app:layout_constraintTop_toBottomOf="@id/tv_name"
+            tools:text="VENUE" />
+
+        <TextView
+            android:id="@+id/tv_dates"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{event.dates}"
+            android:textColor="@android:color/black"
+            app:layout_constraintBottom_toTopOf="@+id/iv_star"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_banner"
+            app:layout_constraintTop_toBottomOf="@id/tv_venue"
+            tools:text="DATE" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_star"
+            android:layout_width="@dimen/star_size"
+            android:layout_height="@dimen/star_size"
+            android:src="@drawable/ic_star"
+            android:tint="@{event.favourite ? @color/yellow : @color/grey}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_banner"
+            app:layout_constraintTop_toBottomOf="@+id/tv_dates" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divisor_height"
+            android:background="@color/grey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
