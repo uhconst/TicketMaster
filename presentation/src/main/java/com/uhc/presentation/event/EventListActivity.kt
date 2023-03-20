@@ -11,7 +11,7 @@ import com.uhc.presentation.event.favourite.FavouriteEventListActivity
 import com.uhc.presentation.ui.base.BaseActivity
 import com.uhc.presentation.ui.extensions.observeNotNull
 import org.koin.android.ext.android.inject
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class EventListActivity : BaseActivity<ActivityEventsBinding>(),
     EventRecyclerAdapter.OnEventClickListener {

@@ -1,9 +1,9 @@
 ext {
     applicationId = 'com.uhc.ticketmaster'
 
-    minSdkVersion = 19
-    targetSdkVersion = 28
-    compileSdkVersion = 28
+    minSdkVersion = 28
+    targetSdkVersion = 33
+    compileSdkVersion = 33
 
     //App version
     versionMajor = 1 //Very big new feature or New app design
@@ -15,36 +15,38 @@ ext {
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
     //app
-    archLifecycleVersion = "2.1.0"
-    archRoomVersion = "2.2.2"
-    constraintVersion = "2.0.0-alpha3"
-    koinVersion = "2.0.0"
+    archLifecycleVersion = "2.2.0"
+    archRoomVersion = "2.4.2"
+    constraintVersion = "2.1.4"
+    koinVersion = "3.3.3"
     rxAndroidVersion = "2.1.1"
-    rxKotlinVersion = "2.3.0"
-    retrofitVersion = "2.5.0"
-    retrofitLogVersion = "3.8.1"
-    supportVersion = "1.0.0"
-    picassoVersion = "2.71828"
+    rxKotlinVersion = "2.4.0"
+    retrofitVersion = "2.9.0"
+    retrofitLogVersion = "4.10.0"
+    supportVersion = "1.6.1"
+    materialVersion = "1.8.0"
+    cardViewVersion = "1.0.0"
+    picassoVersion = "2.8"
+    swipeRefreshVersion = "1.1.0"
 
     //test
-    archCoreTestingVersion = "2.1.0"
-    testCoreVersion = "1.2.0"
-    espressoVersion = "3.1.0"
-    junitVersion = "4.12"
+    archCoreTestingVersion = "2.2.0"
+    testCoreVersion = "1.5.0"
+    espressoVersion = "3.5.1"
+    junitVersion = "4.13.2"
     junitExtVersion = "1.1.1"
-    mockitoKotlinVersion = "2.1.0"
-    robolectricVersion = "4.3.1"
-    runnerVersion = "1.1.0"
+    mockitoKotlinVersion = "2.2.0"
+    robolectricVersion = "4.9.2"
+    runnerVersion = "1.5.2"
 
     appDependencies = [
             kotlin                : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion",
             appCompat             : "androidx.appcompat:appcompat:$supportVersion",
             archLifecyle          : "androidx.lifecycle:lifecycle-extensions:$archLifecycleVersion",
             constraint            : "androidx.constraintlayout:constraintlayout:$constraintVersion",
-            design                : "com.google.android.material:material:$supportVersion",
-            cardView              : "androidx.cardview:cardview:$supportVersion",
-            koin                  : "org.koin:koin-android:$koinVersion",
-            koinViewModel         : "org.koin:koin-android-viewmodel:$koinVersion",
+            design                : "com.google.android.material:material:$materialVersion",
+            cardView              : "androidx.cardview:cardview:$cardViewVersion",
+            koin                  : "io.insert-koin:koin-android:$koinVersion",
             rxKotlin              : "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion",
             rxAndroid             : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
             retrofit              : "com.squareup.retrofit2:retrofit:$retrofitVersion",
@@ -65,7 +67,6 @@ ext {
             testCore     : "androidx.test:core:$testCoreVersion",
             mockitoKotlin: "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlinVersion",
             archCore     : "androidx.arch.core:core-testing:$archCoreTestingVersion",
-            koin         : "org.koin:koin-test:$koinVersion",
             robolectric  : "org.robolectric:robolectric:$robolectricVersion"
     ]
 
@@ -73,11 +74,11 @@ ext {
             kotlin       : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion",
             appCompat    : "androidx.appcompat:appcompat:$supportVersion",
             constraint   : "androidx.constraintlayout:constraintlayout:$constraintVersion",
-            design       : "com.google.android.material:material:$supportVersion",
-            cardView     : "androidx.cardview:cardview:$supportVersion",
+            swipeRefresh : "androidx.swiperefreshlayout:swiperefreshlayout:$swipeRefreshVersion",
+            design       : "com.google.android.material:material:$materialVersion",
+            cardView     : "androidx.cardview:cardview:$cardViewVersion",
             archLifecyle : "androidx.lifecycle:lifecycle-extensions:$archLifecycleVersion",
-            koin         : "org.koin:koin-android:$koinVersion",
-            koinViewModel: "org.koin:koin-android-viewmodel:$koinVersion",
+            koin         : "io.insert-koin:koin-android:$koinVersion",
             rxKotlin     : "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion",
             rxAndroid    : "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion",
             picasso      : "com.squareup.picasso:picasso:$picassoVersion"
@@ -89,7 +90,6 @@ ext {
             espresso     : "androidx.test.espresso:espresso-core:$espressoVersion",
             mockitoKotlin: "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlinVersion",
             archCore     : "androidx.arch.core:core-testing:$archCoreTestingVersion",
-            koin         : "org.koin:koin-test:$koinVersion",
             robolectric  : "org.robolectric:robolectric:$robolectricVersion"
     ]
 

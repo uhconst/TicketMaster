@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -23,8 +22,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 
     buildTypes {
@@ -51,6 +50,9 @@ android {
         }
     }
 
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 
@@ -74,7 +76,6 @@ dependencies {
     kapt dependencies.roomCompiler
 
     implementation dependencies.koin
-    implementation dependencies.koinViewModel
 
     implementation dependencies.picasso
 
@@ -90,12 +91,10 @@ dependencies {
     testImplementation testDependencies.mockitoKotlin
     testImplementation testDependencies.archCore
     testImplementation testDependencies.testCore
-    testImplementation testDependencies.koin
     testImplementation testDependencies.robolectric
 
     androidTestImplementation testDependencies.espresso
     androidTestImplementation testDependencies.junitExt
-    androidTestImplementation testDependencies.koin
     androidTestImplementation testDependencies.runner
 
 

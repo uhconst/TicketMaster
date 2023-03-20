@@ -27,7 +27,7 @@ class RxRemoteErrorInterceptor : Interceptor {
      */
     private fun throwDefaultException(response: Response) {
         try {
-            val jsonError = response.body()!!.string()
+            val jsonError = response.body?.string()
             val jsonObj = JSONObject(jsonError)
             throw DefaultException(
                 jsonObj.getString("status_code"),

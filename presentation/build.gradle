@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -21,8 +20,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 
     buildTypes {
@@ -50,20 +49,19 @@ dependencies {
     implementation dependencies.archLifecyle
 
     implementation dependencies.koin
-    implementation dependencies.koinViewModel
 
     implementation dependencies.picasso
 
     implementation dependencies.rxKotlin
     implementation dependencies.rxAndroid
 
+    implementation dependencies.swipeRefresh
+
     testImplementation testDependencies.junit
     androidTestImplementation testDependencies.runner
     androidTestImplementation testDependencies.espresso
 
     testImplementation testDependencies.mockitoKotlin
-
-    testImplementation testDependencies.koin
 
     testImplementation testDependencies.archCore
 

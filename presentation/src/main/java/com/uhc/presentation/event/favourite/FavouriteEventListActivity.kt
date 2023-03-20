@@ -9,7 +9,7 @@ import com.uhc.presentation.event.EventRecyclerAdapter
 import com.uhc.presentation.ui.base.BaseActivity
 import com.uhc.presentation.ui.extensions.observeNotNull
 import org.koin.android.ext.android.inject
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class FavouriteEventListActivity : BaseActivity<ActivityFavouriteEventsBinding>(),
