@@ -9,6 +9,8 @@ dependencies {
     implementation dependencies.rxKotlin
     implementation dependencies.rxAndroid
 
+    implementation dependencies.coroutines
+
     testImplementation testDependencies.junit
     testImplementation testDependencies.mockitoKotlin
 }

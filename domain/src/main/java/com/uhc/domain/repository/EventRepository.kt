@@ -5,7 +5,7 @@ import io.reactivex.Completable
 import io.reactivex.Single
 
 interface EventRepository {
-    fun getEvents(size: Int): Single<List<Event>>
+    suspend fun getEvents(size: Int): List<Event>
 
     fun saveFavouriteEvent(event: Event): Completable
 

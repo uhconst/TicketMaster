@@ -82,6 +82,8 @@ dependencies {
     implementation dependencies.rxKotlin
     implementation dependencies.rxAndroid
 
+    implementation dependencies.coroutines
+
     implementation dependencies.retrofit
     implementation dependencies.retrofitGsonConverter
     implementation dependencies.retrofitRxJava2Adapter

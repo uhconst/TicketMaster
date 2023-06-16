@@ -8,6 +8,8 @@ import com.uhc.domain.repository.EventRepository
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 /**
  * Event Repository Implementation
@@ -17,21 +19,24 @@ class EventRepositoryImpl(
     private val dao: EventDao
 ) : EventRepository {
 
-    override fun getEvents(size: Int): Single<List<Event>> =
-        service.getEvents(size)
-            .subscribeOn(Schedulers.io())
-            .map { it.embedded.events }
-            .flattenAsObservable { it }
-            .map {
-                /**
-                 * For each EventDto.Response verify if
-                 * it's a favourite event in FavouriteEventEntity by id
-                 */
-                val isFavourite = dao.findFavourite(it.id) != null
-                it.toEvent(isFavourite)
-            }
-            .toList()
+    override suspend fun getEvents(size: Int): List<Event> {
+        val events = withContext(Dispatchers.IO) {
+            val response = service.getEvents(size)
+            val eventDtos = response.embedded.events
+            val events = mutableListOf<Event>()
 
+            /**
+             * For each EventDto.Response verify if
+             * it's a favourite event in FavouriteEventEntity by id
+             */
+            for (eventDto in eventDtos) {
+                val isFavourite = dao.findFavourite(eventDto.id) != null
+                events.add(eventDto.toEvent(isFavourite))
+            }
+            events
+        }
+        return events
+    }
 
     override fun saveFavouriteEvent(event: Event): Completable =
         Completable.create {

@@ -23,9 +23,9 @@ interface EventService {
      * Attempts to get [EventDto.Response].
      */
     @GET("discovery/v2/events")
-    fun getEvents(
+    suspend fun getEvents(
         @Query("size") size: Int
-    ): Single<EventDto.Response>
+    ): EventDto.Response
 
     /**
      * Attempts to get [EventDto.Response].

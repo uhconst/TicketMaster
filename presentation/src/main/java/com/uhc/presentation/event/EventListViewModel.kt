@@ -2,6 +2,7 @@ package com.uhc.presentation.event
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.uhc.domain.exception.DefaultException
 import com.uhc.domain.interactor.FavouriteEventsUseCase
 import com.uhc.domain.interactor.GetEventsUseCase
@@ -9,6 +10,7 @@ import com.uhc.domain.model.Event
 import com.uhc.presentation.ui.base.BaseViewModel
 import com.uhc.presentation.utils.SingleLiveData
 import com.uhc.presentation.utils.map
+import kotlinx.coroutines.launch
 
 class EventListViewModel(
     private val getEventsUseCase: GetEventsUseCase,
@@ -33,15 +35,12 @@ class EventListViewModel(
     val state = SingleLiveData<State>()
 
     fun fetchEvents() {
-        subscribeSingle(
-            observable = getEventsUseCase.getEvents(size)
-                .doOnSubscribe { showLoading.set(true) }
-                .doFinally { showLoading.set(false) },
-            success = {
-                _events.postValue(it)
-            },
-            error = { error.postValue(it) }
-        )
+        showLoading.set(true)
+        viewModelScope.launch {
+            val events = getEventsUseCase.getEvents(size)
+            showLoading.set(false)
+            _events.postValue(events)
+        }
     }
 
     fun onClickFavouriteEvent(event: Event) {
